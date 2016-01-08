@@ -12,13 +12,19 @@ function getWord(){
 	return wordBeingEntered
 	}
 	
-function reverse(word){
-    console.log(word.split("").reverse().join(""));
-	return word.split("").reverse().join("");
+function eliminateSpaces(wordBeingEntered){
+	var wordWithoutSpaces;
+	wordWithoutSpaces = wordBeingEntered.replace(/\s/g, '');
+	return wordWithoutSpaces
+}
+	
+function reverse(wordWithoutSpaces){
+    console.log(wordWithoutSpaces.split("").reverse().join(""));
+	return wordWithoutSpaces.split("").reverse().join("");
 	}
 	
-function checkIfPalindrome(word, reversedWord){
-	if (word === reversedWord){
+function checkIfPalindrome(wordWithoutSpaces, reversedWord){
+	if (wordWithoutSpaces === reversedWord){
 	console.log("Your word is, in fact, a palindrome.")
 	}
 	else {
@@ -30,9 +36,11 @@ function checkIfPalindrome(word, reversedWord){
 function main(){
 	var word;
 	word = getWord();
+	var wordWithoutSpaces;
+	wordWithoutSpaces = eliminateSpaces(word);
 	var reversedWord;
-	reversedWord = reverse(word);
-	return checkIfPalindrome(word, reversedWord);
+	reversedWord = reverse(wordWithoutSpaces);
+	return checkIfPalindrome(wordWithoutSpaces, reversedWord);
 }
 
 main();
